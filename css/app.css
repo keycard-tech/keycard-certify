@@ -1,0 +1,426 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  font-size: 62.5%;
+  font-size: 1em;
+  color: rgb(55, 55, 55);
+  line-height: 1.3em;
+  font-family: 'Cutive Mono', monospace;
+  font-weight: 300;
+  background: rgb(15, 17, 22);
+  overflow-y: hidden;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
+input[disabled="disabled"], input[disabled="disabled"]:hover {
+  opacity: 0.7;
+}
+
+.group:before, .group:after {
+  content: " ";
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  zoom: 1;
+}
+
+::-webkit-scrollbar {
+  background-color: rgb(15, 17, 22);
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb:window-inactive,
+::-webkit-scrollbar-thumb {
+  background:  rgb(60, 77, 75);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar:horizontal {
+  background-color: rgb(15, 17, 22);
+  height: 5px;
+}
+
+@keyframes fade {
+  0% {
+      opacity: 0;
+      visibility: hidden;
+  }
+
+  100% {
+      opacity: 1;
+      visibility: visible;
+  }
+}
+
+.keycard__main-container {
+  background: rgb(15, 17, 22);
+  width: 100%;
+  height: 100%;
+  color: white;
+  height: 100%;
+  opacity: 1;
+  display: inherit;
+  animation: fade 300ms;
+}
+
+.keycard__card-info-container-hidden {
+  opacity: 0;
+  display: none;
+  -webkit-transition: opacity 600ms, visibility 600ms;
+  transition: opacity 200ms, visibility 200ms;
+}
+
+.keycard__pairing-container {
+  color: white;
+  text-align: center;
+  opacity: 1;
+  visibility: visible;
+  display: inherit;
+  animation: fade 300ms;
+}
+
+.keycard__card-info-container-message {
+  text-align: center;
+  padding: 8em 1em;
+}
+
+.keycard__card-messages {
+  padding: 1.5em;
+  box-sizing: border-box;
+  text-align: left;
+  font-size: .9em;
+  color:#6f85e4;
+  overflow: auto;
+  max-height: 47vh;
+  white-space: pre-line;
+}
+
+.keycard__card-info-container-element {
+  display: block;
+  padding: .2em 2em;
+}
+
+.keycard__ident-container {
+  height: 60%;
+  box-sizing: border-box;
+  padding: 2em 0;
+}
+
+.keycard__card-info-container {
+  height: 40%;
+  box-sizing: border-box;
+  background: #1c2030;
+  overflow-y: scroll;
+  display: inherit;
+}
+
+.keycard__ident-form-container {
+  width: 80%;
+  box-sizing: border-box;
+  margin: 1em auto;
+}
+
+.keycard__ident-form-field-container {
+  padding: .8em 0;
+  box-sizing: border-box;
+}
+
+.keycard__ident-form-field-label {
+  float: left;
+  width: 37%;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-top: .5em;
+}
+
+.keycard-ident__enc-file-label {
+  padding-top: 2em;
+}
+
+.keycard__inp-right {
+  float: right;
+  width: 63%;
+  background: none;
+  border: none;
+  border-bottom: solid 1px white;
+  outline: none;
+  font-family: 'Cutive Mono', monospace;
+  color: white;
+  font-size: 1em;
+  padding: .5em 0;
+}
+
+.keycard__img-card-container {
+  width: 20%;
+  box-sizing: border-box;
+  margin: 4em auto;
+}
+
+.keycard__img {
+  width: 100%;
+  display: block;
+}
+
+.keycard__pairing-message {
+  font-size: 1.5em;
+  line-height: 2em;
+  font-style: bold;
+  font-family: 'Inconsolata', monospace;
+  padding: 0 1em;
+  color: white;
+  transition: opacity 1s;
+}
+
+.keycard__pairing-input-container {
+  text-align: left;
+  width: 60%;
+  box-sizing: border-box;
+  margin: 3em auto;
+}
+
+.keycard__pairing-input-field {
+  display: block;
+}
+
+.keycard__pairing-input-label {
+  float: left;
+  width: 50%;
+  padding: 1em 0;
+  font-size: 1.4em;
+}
+
+.keycard__pairing-input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid white;
+  box-shadow: none;
+  color: white;
+  float: right;
+  width: 45%;
+  outline: none;
+  padding: .3em .5em;
+  box-sizing: border-box;
+  font-size: 1.4em;
+  font-family: 'Cutive Mono', monospace;
+  text-align: center;
+}
+
+.keycard__btn-container {
+  text-align: center;
+  padding: 2em 0;
+}
+
+.keycard__btn {
+  background: #6f85e4;
+  padding: .8em 3em;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border: none;
+  color: white;
+  display: inline-block;
+  font-family: 'Cutive Mono', monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  outline: none;
+  border-radius: 3px;
+}
+
+.keycard__loading {
+  display: block;
+  position: relative;
+  width: 148px;
+  height: 148px;
+  margin:  4em auto;
+}
+.keycard__loading div {
+  position: absolute;
+  border: 4px solid rgb(112, 112, 191);
+  opacity: 1;
+  border-radius: 50%;
+  animation: keycard__loading 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.keycard__loading div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes keycard__loading {
+  0% {
+    top: 72px;
+    left: 72px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 144px;
+    height: 144px;
+    opacity: 0;
+  }
+}
+
+.keycard__ident-form-enc-field-container {
+  position: relative;
+}
+
+.keycard__ident-file-field {
+  float: left;
+  margin: .8em 0;
+  position: relative;
+  width: 170px;
+  border: none;
+}
+
+.keycard__ident-file-label {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  width: 100%;
+  background: white;
+  cursor: pointer;
+  color: rgb(15, 17, 22);
+  padding: .6em 0;
+  font-family: 'Cutive Mono', monospace;
+  font-size: .9em;
+  border-radius: 3px;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+}
+
+.keycard__ident-file-input {
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 50px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.keycard__file-path-label {
+  display: block;
+  padding-top: .4em;
+  overflow-x: scroll;
+  width: 200%;
+}
+
+.keycard__check {
+  padding: 0;
+  height: initial;
+  width: initial;
+  margin-bottom: 0;
+  display: none;
+  cursor: pointer;
+}
+
+.keycard__check-label {
+  position: relative;
+  cursor: pointer;
+  margin-right: 2.5em;
+}
+
+.keycard__check-label:before {
+  content:'';
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 2px solid rgb(72, 151, 127);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+  padding: .56em;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-right: .8em;
+}
+
+.keycard__check:checked + .keycard__check-label:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: .1em;
+  left: .5em;
+  width: .25em;
+  height: .8em;
+  border: solid rgb(72, 151, 127);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.keycard-ident__destination-path-container {
+  width: 100%;
+  display: block;
+}
+
+.keycard-ident__select-btn {
+  font-family: "Material Symbols Outlined", monospace;
+  margin-top: .4em;
+  float: right;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+}
+
+.keycard-ident__destination-path{
+  border-bottom: solid 1px white;
+  float: left;
+  width: 55%;
+  padding: .5em 0;
+  font-size: 1em;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
