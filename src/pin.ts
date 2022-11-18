@@ -3,7 +3,7 @@ import { Utils } from "./utils";
 import { ipcRenderer } from "electron";
 
 export namespace PIN {
-  export function verifyPIN() : void {
+  export function verifyPIN(): void {
     let pin = document.getElementById("verify-pin-inp") as HTMLInputElement;
     let submitBtn = document.getElementById("verify-pin-btn") as HTMLInputElement;
     let cancelBtn = document.getElementById("verify-pin-cancel");

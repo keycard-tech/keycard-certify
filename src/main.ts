@@ -28,7 +28,7 @@ export namespace Main {
     mainWindow.webContents.once("dom-ready", () => {
       card.start();
     });
-    mainWindow.webContents.openDevTools();
+    //mainWindow.webContents.openDevTools();
     mainWindow.on('closed', Main.onClose);
   }
 

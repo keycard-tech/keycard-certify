@@ -12,7 +12,7 @@ export namespace UI {
 
   const btns = document.getElementsByClassName("keycard__cmd-disabled");
 
-  export function saveCardInfo(appInfo: SessionInfo) : void {
+  export function saveCardInfo(appInfo: SessionInfo): void {
     cardInfo = appInfo;
   }
 
@@ -32,18 +32,18 @@ export namespace UI {
     let msg = document.getElementById("no-card-detected-msg");
   }
 
-  export function renderCmdScreenLayout(btn: HTMLElement, layoutPath: string, onLoad: () => void) : void {
+  export function renderCmdScreenLayout(btn: HTMLElement, layoutPath: string, onLoad: () => void): void {
     btn.addEventListener("click", (e) => {
       loadFragment(layoutPath, onLoad);
       e.preventDefault();
     });
   }
 
-  export function renderVerifyPinLayout(layoutPin: string, layoutPuk: string, pinFunc: () => void, pukFunc: () => void) : void {
-      cardInfo.pinRetry > 0 ? loadFragment(layoutPin, pinFunc) : loadFragment(layoutPuk, pukFunc);
+  export function renderVerifyPinLayout(layoutPin: string, layoutPuk: string, pinFunc: () => void, pukFunc: () => void): void {
+    cardInfo.pinRetry > 0 ? loadFragment(layoutPin, pinFunc) : loadFragment(layoutPuk, pukFunc);
   }
 
-  export function loadFragment(filename: string, onLoad: () => void) : void {
+  export function loadFragment(filename: string, onLoad: () => void): void {
     let path = `${__dirname}/../layouts/${filename}`;
     layoutContainer!.innerHTML = "";
 
@@ -82,14 +82,14 @@ export namespace UI {
     });
   }
 
-  export function renderErrorMess(errMessage: string, messField: HTMLElement) : void {
+  export function renderErrorMess(errMessage: string, messField: HTMLElement): void {
     messField.innerHTML = errMessage;
     setTimeout(() => {
       messField.innerHTML = "";
     }, 10000);
   }
 
-  export function renderNoAppInfo() : void {
+  export function renderNoAppInfo(): void {
     let header = document.getElementById("app-info-header");
     header!.innerHTML = "No card connected";
     header!.classList.remove("keycard__app-info-header");

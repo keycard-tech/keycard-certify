@@ -11,8 +11,8 @@
     "postinstall": "electron-builder install-app-deps"
   },
   "build": {
-    "appId": "com.github.choppu.keycard-desktop",
-    "productName": "Keycard Desktop",
+    "appId": "com.github.choppu.keycard-certify",
+    "productName": "Keycard Certify",
     "files": [
       "**/*",
       "!tsconfig.json",

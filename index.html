@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Keycard Desktop</title>
+  <title>Keycard Certify</title>
   <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
   <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&display=swap" rel="stylesheet">
@@ -12,38 +12,38 @@
 
 <body class="keycard__body-container">
   <div class="keycard__main-container group" id="main-container">
-    <div class="keycard__ident-container">
-      <div class="keycard__ident-form-container" id="ident-form">
-        <div class="keycard__ident-form">
-          <div class="keycard__ident-form-field-container group">
-            <label for="lot-number" class="keycard__ident-form-field-label">Lot number</label>
-            <input type="text" class="keycard__ident-form-field-input-text keycard__inp-right" id="lot-number" name="lot-number" placeholder="Lot number" required>
+    <div class="keycard-ident__container">
+      <div class="keycard-ident__form-container" id="ident-form">
+        <div class="keycard-ident__form">
+          <div class="keycard-ident__form-field-container group">
+            <label for="lot-number" class="keycard-ident__form-field-label">Lot number</label>
+            <input type="text" class="keycard-ident__form-field-input-text keycard__inp-right" id="lot-number" name="lot-number" placeholder="Lot number" required>
           </div>
-          <div class="keycard__ident-form-field-container group">
-            <label for="card-quantity" class="keycard__ident-form-field-label">Number of cards</label>
-            <input type="number" class="keycard__ident-form-field-input-number keycard__inp-right" id="card-quantity" name="card-quantity" value="1" required>
+          <div class="keycard-ident__form-field-container group">
+            <label for="card-quantity" class="keycard-ident__form-field-label">Number of cards</label>
+            <input type="number" class="keycard-ident__form-field-input-number keycard__inp-right" id="card-quantity" name="card-quantity" value="1" required>
           </div>
-          <div class="keycard-ident__destination-path-container keycard__ident-form-field-container group">
-            <span class="keycard__ident-form-field-label">Destination file</span>
+          <div class="keycard-ident__destination-path-container keycard-ident__form-field-container group">
+            <span class="keycard-ident__form-field-label">Destination file</span>
             <div class="group">
               <span class="keycard-ident__destination-path" id="show-destination-path">No destination file selected</span>
               <button id="destination-path" class="keycard-ident__select-btn material-symbols-outlined">folder_open</button>
             </div>
           </div>
-          <div class="keycard__ident-form-field-container keycard__ident-form-enc-field-container group">
-            <label for="encryption-key" class="keycard__ident-form-field-label keycard-ident__enc-file-label">Output encryption key</label>
-            <div class="keycard__ident-file-field keycard__inp-right group">
+          <div class="keycard-ident__form-field-container keycard-ident__form-enc-field-container group">
+            <label for="encryption-key" class="keycard-ident__form-field-label keycard-ident__enc-file-label">Output encryption key</label>
+            <div class="keycard-ident__file-field keycard__inp-right group">
               <div class="keycard__file-inp-left">
-                <input type="file" class="keycard__ident-file-input" accept=".asc" id="encryption-key" name="encryption-key" required>
-                <span class="keycard__ident-file-label">
+                <input type="file" class="keycard-ident__file-input" accept=".asc" id="encryption-key" name="encryption-key" required>
+                <span class="keycard-ident__file-label">
                   Choose File
                 </span>
               </div>
               <span id="file-enc-path-label" class="keycard__file-path-label">No file selected</span>
             </div>
           </div>
-          <div class="keycard__ident-start-btn-container keycard__btn-container">
-            <button class="keycard__ident-start-btn keycard__btn" id="start-btn" disabled>Start</button>
+          <div class="keycard-ident__start-btn-container keycard__btn-container">
+            <button class="keycard-ident__start-btn keycard__btn" id="start-btn" disabled>Start</button>
           </div>
         </div>
       </div>

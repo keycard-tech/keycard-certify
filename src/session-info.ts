@@ -20,7 +20,7 @@ export class  SessionInfo {
     this.reset();
   }
 
-  setApplicationInfo(appInfo: ApplicationInfo) {
+  setApplicationInfo(appInfo: ApplicationInfo) : void {
     this.instanceUID = Utils.hx(appInfo.instanceUID);
     this.appVersion = appInfo.getAppVersionString();
     this.pairingSlots = appInfo.freePairingSlots.toString();
@@ -28,12 +28,12 @@ export class  SessionInfo {
     this.hasMasterKey = appInfo.hasMasterKey();
   }
 
-  setApplicationStatus(appStatus: ApplicationStatus) {
+  setApplicationStatus(appStatus: ApplicationStatus) : void {
     this.pinRetry = appStatus.pinRetryCount;
     this.pukRetry = appStatus.pukRetryCount;
   }
 
-  reset() {
+  reset() : void {
     this.cashAddress = "";
     this.instanceUID = "";
     this.appVersion = "";

@@ -2,9 +2,8 @@ import { ipcRenderer } from "electron";
 import { UI } from "./ui";
 
 export namespace Ident {
-  export function initUI() : void {
+  export function initUI(): void {
     let filePath: string | undefined;
-    let destinationPath: string;
     let fileLabel = document.getElementById("file-enc-path-label");
     let fileField = document.getElementById("encryption-key") as HTMLInputElement;
     let lot = document.getElementById("lot-number") as HTMLInputElement;
@@ -49,7 +48,7 @@ export namespace Ident {
     });
   }
 
-  export function setDestinationPath(path: string) : void {
+  export function setDestinationPath(path: string): void {
     let destinationPathLabel = document.getElementById("show-destination-path");
     destinationPathLabel!.innerHTML = path;
   }

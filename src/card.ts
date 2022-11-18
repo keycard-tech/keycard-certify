@@ -19,7 +19,6 @@ const path = require('path');
 
 const maxPINRetryCount = 3;
 const maxPUKRetryCount = 5;
-const maxPairing = 5;
 const dataHeader = "80e2000082";
 
 export class Card {
@@ -211,15 +210,15 @@ export class Card {
     this.window.send("certificate-creation-success");
   }
 
-  openDestinationDialog() : void {
+  openDestinationDialog(): void {
     let options = {
       title: 'Select the destination path to save the processed file',
       buttonLabel: "Choose",
       defaultPath: path.join(__dirname, 'certificates.csv.asc'),
       filters: [
         {
-            name: 'ASC Files',
-            extensions: ['csv.asc']
+          name: 'ASC Files',
+          extensions: ['csv.asc']
         }
       ]
     };
@@ -227,7 +226,7 @@ export class Card {
     dialog.showSaveDialog(options).then((path) => {
       this.window.send("destination-path-selected", path.filePath);
     }).catch((err) => {
-      throw(err);
+      throw (err);
     });
   }
 

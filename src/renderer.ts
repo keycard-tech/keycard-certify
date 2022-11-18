@@ -67,7 +67,7 @@ ipcRenderer.on("pub-key", (_, key) => {
 
 ipcRenderer.on("pairing-needed", (_, defpair: boolean) => {
   UI.addMessageToLog("No pairing found");
-  if(defaultPass) {
+  if (defaultPass) {
     defaultPass = false;
     ipcRenderer.send("pairing-pass-submitted", "KeycardDefaultPairing");
   } else {
