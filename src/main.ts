@@ -35,7 +35,7 @@ export namespace Main {
   export function main(app: Electron.App, browserWindow: typeof BrowserWindow): void {
     BrowserWindow = browserWindow;
     application = app;
-    application.setName("Keycard Desktop");
+    application.setName("Keycard Certify");
     application.on('window-all-closed', Main.onWindowAllClosed);
     application.on('ready', Main.onReady);
   }
