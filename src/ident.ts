@@ -31,7 +31,7 @@ export namespace Ident {
     });
 
     destinationPathBtn.addEventListener("click", (e) => {
-      ipcRenderer.send("open-destination-folder-dialog");
+      ipcRenderer.send("open-destination-folder-dialog", lot.value);
     });
 
     ipcRenderer.on("verification-success", (_) => {

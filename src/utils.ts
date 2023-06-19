@@ -1,5 +1,6 @@
 export namespace Utils {
   const numStrLength = 6;
+  const RFC4648 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 
   export function hx(arr: Uint8Array): string {
     return Buffer.from(arr).toString('hex');
@@ -22,5 +23,11 @@ export namespace Utils {
     }
 
     return res;
+  }
+
+
+
+  export function uint20ToBase32(num: number): string {
+    return RFC4648.charAt((num >> 15) & 0x1F) + RFC4648.charAt((num >> 10) & 0x1F) + RFC4648.charAt((num >> 5) & 0x1F) + RFC4648.charAt(num & 0x1F)
   }
 }

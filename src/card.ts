@@ -1,6 +1,6 @@
 import Keycard from "keycard-sdk"
 import { WebContents } from "electron";
-import { ipcMain, dialog } from "electron"
+import { ipcMain, dialog } from "electron";
 import { SessionInfo } from "./session-info";
 import { Utils } from "./utils";
 import { Pairing } from "keycard-sdk/dist/pairing";
@@ -193,8 +193,7 @@ export class Card {
     for (let i = 0; i < cards; i++) {
       let certificate = Certificate.generateNewCertificate(caKey);
       let certData = certificate.toStoreData();
-      let num = Utils.formatNumtoString(i);
-      let cardID = lot + num;
+      let cardID = lot + '-' + Utils.uint20ToBase32(i);
       let certDataString = dataHeader + Buffer.from(certData).toString('hex');
       let line = cardID + "," + certDataString + "\n";
       encData += line;
@@ -210,11 +209,12 @@ export class Card {
     this.window.send("certificate-creation-success");
   }
 
-  openDestinationDialog(): void {
+  openDestinationDialog(lot: string): void {
+    let fileName = lot ? lot + '.csv.asc' : 'certificates.csv.asc';
     let options = {
       title: 'Select the destination path to save the processed file',
       buttonLabel: "Choose",
-      defaultPath: path.join(__dirname, 'certificates.csv.asc'),
+      defaultPath: path.join(__dirname, fileName),
       filters: [
         {
           name: 'ASC Files',
@@ -296,6 +296,6 @@ export class Card {
     ipcMain.on("verify-pin", this.withErrorHandler(this.verifyPIN));
     ipcMain.on("verify-puk", this.withErrorHandler(this.verifyPUK));
     ipcMain.on("start-ident", this.withErrorHandler(this.identCert));
-    ipcMain.on("open-destination-folder-dialog", (_) => this.openDestinationDialog());
+    ipcMain.on("open-destination-folder-dialog", (_, lot) => this.openDestinationDialog(lot));
   }
 }
