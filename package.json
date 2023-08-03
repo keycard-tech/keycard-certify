@@ -12,7 +12,8 @@
   },
   "build": {
     "appId": "com.github.choppu.keycard-certify",
-    "productName": "Keycard Certify",
+    "productName": "keycard-certify",
+    "artifactName": "${productName}_${version}_${arch}.${ext}",
     "publish": false,
     "files": [
       "**/*",

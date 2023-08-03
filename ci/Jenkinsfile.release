@@ -1,0 +1,83 @@
+#!/usr/bin/env groovy
+// vim:ft=Jenkinsfile
+library 'status-jenkins-lib@github-add-verbose'
+
+pipeline {
+  /* Allows to run the same Jenkinsfile on different platforms. */
+  agent { label 'linux' }
+
+  parameters {
+    booleanParam(
+      name: 'PUBLISH',
+      description: 'Trigger publishing of build results to GitHub.',
+      defaultValue: getPublishDefault(params.PUBLISH),
+    )
+  }
+
+  options {
+    timestamps()
+    ansiColor('xterm')
+    /* This also includes wait time in the queue. */
+    timeout(time: 20, unit: 'MINUTES')
+    /* Abort old builds for non-main branches. */
+    disableConcurrentBuilds()
+    /* Limit builds retained. */
+    buildDiscarder(logRotator(
+      numToKeepStr: '10',
+      daysToKeepStr: '30',
+    ))
+  }
+
+  stages {
+    stage('Build') {
+      parallel {
+        stage('Linux') { steps { script {
+          linux = jenkins.Build('keycard-certify/platforms/linux/x86_64')
+        } } }
+        stage('MacOS') { steps { script {
+          macos = jenkins.Build('keycard-certify/platforms/macos/x86_64')
+        } } }
+      }
+    }
+
+    stage('Archive') {
+      steps { script {
+        sh('rm -f pkg/*')
+        jenkins.copyArts(linux)
+        jenkins.copyArts(macos)
+        version = readJSON(file: 'package.json')['version']
+        dir('pkg') {
+          /* generate sha256 checksums for upload */
+          sh "sha256sum * | tee ../pkg/keycard-certify_${version}.sha256"
+          archiveArtifacts('*')
+        }
+      } }
+    }
+
+    stage('Publish') {
+      when { expression { params.PUBLISH } }
+      steps { script {
+        github.publishReleaseFiles(
+          repo: 'keycard-certify',
+          version: "v${version}",
+          desc: ':warning: __Please fill me in!__',
+          verbose: true
+        )
+      } }
+    }
+  } // stages
+
+  post {
+    always { cleanWs() }
+  } // post
+} // pipeline
+
+/* Helper that makes PUBLISH default to 'false' unless:
+ * - The build is for a release branch
+ * - A user explicitly specified a value
+ * Since release builds create and re-create GitHub drafts every time. */
+def Boolean getPublishDefault(Boolean previousValue) {
+  if (env.JOB_NAME.startsWith('keycard-certify/release')) { return true }
+  if (previousValue != null) { return previousValue }
+  return false
+}
