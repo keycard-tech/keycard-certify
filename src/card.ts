@@ -1,5 +1,5 @@
 import Keycard from "keycard-sdk"
-import { WebContents } from "electron";
+import { IpcMainEvent, WebContents } from "electron";
 import { ipcMain, dialog } from "electron";
 import { SessionInfo } from "./session-info";
 import { Utils } from "./utils";
@@ -281,8 +281,8 @@ export class Card {
     });
   }
 
-  withErrorHandler(fn: (...args: any) => Promise<void>): (ev: Event) => void {
-    return async (_: Event, ...args: any) => {
+  withErrorHandler(fn: (...args: any) => Promise<void>): (ev: IpcMainEvent) => void {
+    return async (_: IpcMainEvent, ...args: any) => {
       try {
         await fn.call(this, ...args);
       } catch (err: any) {
