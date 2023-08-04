@@ -6,8 +6,8 @@
   "scripts": {
     "build": "tsc",
     "start": "npm run build && electron ./out/app.js",
-    "pack": "npm run build && electron-builder --dir --publish never",
-    "dist": "npm run build && electron-builder --publish never",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder",
     "postinstall": "electron-builder install-app-deps"
   },
   "build": {
@@ -21,7 +21,8 @@
     ],
     "mac": {
       "category": "public.app-category.utilities",
-      "target": "zip"
+      "target": "zip",
+      "publish": false
     }
   },
   "author": "Ksenia Balistreri",
