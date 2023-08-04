@@ -13,6 +13,7 @@
   "build": {
     "appId": "com.github.choppu.keycard-certify",
     "productName": "Keycard Certify",
+    "publish": false,
     "files": [
       "**/*",
       "!tsconfig.json",
@@ -21,8 +22,7 @@
     ],
     "mac": {
       "category": "public.app-category.utilities",
-      "target": "zip",
-      "publish": false
+      "target": "zip"
     }
   },
   "author": "Ksenia Balistreri",
