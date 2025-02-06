@@ -187,6 +187,7 @@ export class Card {
     let caKey = BIP32KeyPair.fromTLV(data);
     let encKey = fs.readFileSync(gpgKey, { encoding: 'utf8', flag: 'r' });
     let encData = "";
+    let plainData = "";
 
     this.window.send("pub-key", Buffer.from(CryptoUtils.compressPublicKey(caKey.publicKey)).toString('hex'));
 
@@ -195,8 +196,8 @@ export class Card {
       let certData = certificate.toStoreData();
       let cardID = lot + '-' + Utils.uint20ToBase32(i);
       let certDataString = dataHeader + Buffer.from(certData).toString('hex');
-      let line = cardID + "," + certDataString + "\n";
-      encData += line;
+      encData += cardID + "," + certDataString + "\n";
+      plainData += cardID  + "," + Buffer.from(certificate.identPub).toString('hex') + "\n";
     }
 
     let encryptedData = await openpgp.encrypt({
@@ -204,7 +205,9 @@ export class Card {
       encryptionKeys: await openpgp.readKey({ armoredKey: encKey }),
     });
 
+    let plainPath = path.join(path.dirname(destPath), (path.basename(destPath, ".csv.asc") + ".public.csv"));
     fs.writeFileSync(destPath, encryptedData);
+    fs.writeFileSync(plainPath, plainData);
 
     this.window.send("certificate-creation-success");
   }
